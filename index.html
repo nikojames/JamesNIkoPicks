@@ -59,6 +59,13 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        .tool-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -86,7 +93,7 @@
                 <li>Historical performance</li>
             </ul>
         </div>
-        <button class="button" onclick="showTool('playerProp')">Launch Tool</button>
+        <button class="button" onclick="showTool('playerPropContainer')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -99,7 +106,7 @@
                 <li>Recommendations on value trades</li>
             </ul>
         </div>
-        <button class="button" onclick="showTool('tradeAnalyzer')">Launch Tool</button>
+        <button class="button" onclick="showTool('tradeAnalyzerContainer')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -112,7 +119,7 @@
                 <li>Expert recommendations</li>
             </ul>
         </div>
-        <button class="button" onclick="showTool('startSit')">Launch Tool</button>
+        <button class="button" onclick="showTool('startSitContainer')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -125,7 +132,7 @@
                 <li>Priority recommendations</li>
             </ul>
         </div>
-        <button class="button" onclick="showTool('waiverWire')">Launch Tool</button>
+        <button class="button" onclick="showTool('waiverWireContainer')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -138,7 +145,7 @@
                 <li>Expert advice and notes</li>
             </ul>
         </div>
-        <button class="button" onclick="showTool('expertInsights')">Launch Tool</button>
+        <button class="button" onclick="showTool('expertInsightsContainer')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -151,19 +158,57 @@
                 <li>Optimal lineup combinations</li>
             </ul>
         </div>
-        <button class="button" onclick="showTool('optimizer')">Launch Tool</button>
+        <button class="button" onclick="showTool('optimizerContainer')">Launch Tool</button>
+    </div>
+
+    <!-- Tool Containers -->
+    <div id="playerPropContainer" class="tool-container">
+        <h3>Player Prop Insights Tool</h3>
+        <p>Detailed insights and analysis of player props will be displayed here.</p>
+    </div>
+
+    <div id="tradeAnalyzerContainer" class="tool-container">
+        <h3>Trade Analyzer Tool</h3>
+        <p>Analysis of proposed trades will be displayed here.</p>
+    </div>
+
+    <div id="startSitContainer" class="tool-container">
+        <h3>Start/Sit Comparisons Tool</h3>
+        <p>Recommendations for starting or sitting players based on matchup analysis will be displayed here.</p>
+    </div>
+
+    <div id="waiverWireContainer" class="tool-container">
+        <h3>Waiver Wire & Free Agent Recommendations Tool</h3>
+        <p>Suggestions for waiver wire pick-ups will be displayed here.</p>
+    </div>
+
+    <div id="expertInsightsContainer" class="tool-container">
+        <h3>Expert Insights and Trends Tool</h3>
+        <p>Expert insights and analysis of player trends will be displayed here.</p>
+    </div>
+
+    <div id="optimizerContainer" class="tool-container">
+        <h3>Optimizer Tool</h3>
+        <p>Optimized lineups for DraftKings and FanDuel will be displayed here.</p>
     </div>
 
     <script>
         // JavaScript to show tools directly on the page (instead of opening new tabs)
-        function showTool(toolName) {
+        function showTool(containerId) {
             const leagueCode = document.getElementById('leagueCode').value;
             if (!leagueCode) {
                 alert('Please enter your ESPN Fantasy Football League Code first.');
                 return;
             }
-            alert(`${toolName} tool is launching. League Code: ${leagueCode}`);
-            // Placeholder for future tool-specific UI that can be embedded in the page
+
+            // Hide all tool containers first
+            const toolContainers = document.querySelectorAll('.tool-container');
+            toolContainers.forEach(container => {
+                container.style.display = 'none';
+            });
+
+            // Show the selected tool container
+            document.getElementById(containerId).style.display = 'block';
         }
 
         // Function to submit the ESPN Fantasy League Code
