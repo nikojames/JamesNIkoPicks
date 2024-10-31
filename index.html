@@ -4,8 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WalterPicks Replica - Fantasy Sports Insights</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .main-header {
+            background: #333;
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .signup {
+            background: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e8491d;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const signupForm = document.getElementById('signupForm');
+            signupForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const email = document.getElementById('email').value;
+
+                try {
+                    const response = await fetch('http://localhost:3000/api/signup', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email })
+                    });
+
+                    const message = await response.text();
+                    document.getElementById('signupMessage').innerText = message;
+                } catch (error) {
+                    document.getElementById('signupMessage').innerText = 'Error signing up. Please try again later.';
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <!-- Navbar -->
@@ -49,4 +109,48 @@
         </div>
     </footer>
 </body>
+
+<!-- Backend using Express (for API calls) -->
+<script>
+    (async () => {
+        const express = require('express');
+        const mongoose = require('mongoose');
+        const app = express();
+        const port = 3000;
+
+        // Database connection
+        mongoose.connect('mongodb://localhost/walterclone', { useNewUrlParser: true, useUnifiedTopology: true });
+        const db = mongoose.connection;
+        db.on('error', console.error.bind(console, 'connection error:'));
+        db.once('open', () => {
+            console.log('Connected to the database');
+        });
+
+        // Define a User Schema for MongoDB
+        const userSchema = new mongoose.Schema({
+            email: String,
+            leagues: Array,
+            bets: Array
+        });
+        const User = mongoose.model('User', userSchema);
+
+        // Middleware to parse incoming JSON
+        app.use(express.json());
+
+        // Route to handle signup
+        app.post('/api/signup', async (req, res) => {
+            const user = new User({ email: req.body.email });
+            try {
+                await user.save();
+                res.status(201).send('User signed up successfully!');
+            } catch (err) {
+                res.status(400).send('Error signing up user');
+            }
+        });
+
+        app.listen(port, () => {
+            console.log(`Server running at http://localhost:${port}`);
+        });
+    })();
+</script>
 </html>
