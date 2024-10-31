@@ -3,87 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantasy Tools Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>FantasyPros Premium Overview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #007bff;
+            margin-top: 0;
+        }
+
+        .features-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .features-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: "\2713";
+            color: #007bff;
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .flex-container {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .section {
+                flex: 1;
+                margin-right: 20px;
+            }
+
+            .section:last-child {
+                margin-right: 0;
+            }
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>FantasyPros Premium Features</h1>
+        <p>Level Up Your Fantasy Game with Exclusive Tools & Insights</p>
+    </header>
     <div class="container">
-        <header class="my-4 text-center fantasy-header">
-            <h1>Fantasy Sports Tools Dashboard</h1>
-            <p>Get projections, analysis, and fantasy advice for your league</p>
-        </header>
-
-        <!-- Player Search Section -->
-        <section id="player-search" class="fantasy-section">
-            <h2>Player Search</h2>
-            <div class="input-group mb-3">
-                <input type="text" id="playerName" placeholder="Enter player name" class="form-control">
-                <button id="searchBtn" class="btn btn-primary">Search Player</button>
-            </div>
-            <div id="playerInfo" class="player-info mt-3"></div>
-        </section>
-
-        <!-- Player Rankings Section -->
-        <section id="player-rankings" class="my-5 fantasy-section">
-            <h2>Top Player Rankings</h2>
-            <ul id="rankingsList" class="list-group fantasy-list">
-                <!-- Player Rankings will populate here -->
+        <section class="section">
+            <h2>Premium Cheat Sheets & Draft Tools</h2>
+            <ul class="features-list">
+                <li>Customizable draft cheat sheets</li>
+                <li>Live sync draft assistant with real-time advice</li>
             </ul>
+            <button onclick="toggleDetails('cheat-sheets')">More Details</button>
+            <p id="cheat-sheets" class="hidden">With the Premium Cheat Sheets, you can customize your draft according to your league's rules, providing you with the most tailored experience for drafting success.</p>
         </section>
-
-        <!-- Weekly Projections Section -->
-        <section id="weekly-projections" class="my-5 fantasy-section">
-            <h2>Weekly Projections</h2>
-            <button id="getProjections" class="btn btn-success">Get Projections</button>
-            <div id="projectionsTable" class="mt-3 fantasy-table"></div>
+        <section class="section">
+            <h2>League Sync & Analysis</h2>
+            <ul class="features-list">
+                <li>Sync your fantasy league for in-depth analysis</li>
+                <li>Personalized start/sit recommendations</li>
+                <li>Advanced trade analyzer tool</li>
+            </ul>
+            <button onclick="toggleDetails('league-sync')">More Details</button>
+            <p id="league-sync" class="hidden">League Sync allows you to integrate your fantasy league directly with our tools, ensuring you have up-to-date information for your entire roster.</p>
+        </section>
+        <section class="section">
+            <h2>Advice and Insights</h2>
+            <ul class="features-list">
+                <li>Expert consensus rankings for accurate projections</li>
+                <li>Weekly matchup advice for players</li>
+                <li>Daily fantasy sports (DFS) tools</li>
+            </ul>
+            <button onclick="toggleDetails('advice-insights')">More Details</button>
+            <p id="advice-insights" class="hidden">Get advice from experts across the industry to make sure you have the best information available for setting your lineup.</p>
+        </section>
+        <section class="section">
+            <h2>Waiver & Start/Sit Assistance</h2>
+            <ul class="features-list">
+                <li>Waiver assistant for optimal pickups</li>
+                <li>Start/Sit assistant to set your ideal lineup</li>
+            </ul>
+            <button onclick="toggleDetails('waiver-assistance')">More Details</button>
+            <p id="waiver-assistance" class="hidden">Use the waiver assistant to make informed decisions on who to pick up each week, helping you stay ahead of the competition.</p>
+        </section>
+        <section class="section">
+            <h2>Advanced Data & Tools</h2>
+            <ul class="features-list">
+                <li>Player projections and auction values</li>
+                <li>"Who Should I Start?" tool for player comparison</li>
+            </ul>
+            <button onclick="toggleDetails('advanced-data')">More Details</button>
+            <p id="advanced-data" class="hidden">Our advanced tools give you the power to project player performances and determine their value, essential for making winning decisions.</p>
+        </section>
+        <section class="section">
+            <h2>Hall of Fame Tier Exclusive</h2>
+            <ul class="features-list">
+                <li>Advanced metrics and historical data</li>
+                <li>"My Playbook" for advanced team management</li>
+            </ul>
+            <button onclick="toggleDetails('hall-of-fame')">More Details</button>
+            <p id="hall-of-fame" class="hidden">The Hall of Fame tier offers exclusive access to deep analytics, historical data, and tools like "My Playbook" for taking your team to the next level.</p>
         </section>
     </div>
-
+    <footer>
+        <p>&copy; 2024 FantasyPros | All Rights Reserved</p>
+    </footer>
     <script>
-        document.getElementById('searchBtn').addEventListener('click', function() {
-            const playerName = document.getElementById('playerName').value;
-            // Mock data search (replace with API or backend connection)
-            const playerData = {
-                name: playerName,
-                position: 'Running Back',
-                team: 'Fantasy Team',
-                points: Math.floor(Math.random() * 100) + 50
-            };
-            document.getElementById('playerInfo').innerHTML = 
-                `<strong>Name:</strong> ${playerData.name} <br>
-                <strong>Position:</strong> ${playerData.position} <br>
-                <strong>Team:</strong> ${playerData.team} <br>
-                <strong>Fantasy Points:</strong> ${playerData.points}`;
-        });
-
-        document.getElementById('getProjections').addEventListener('click', function() {
-            // Mock projection data (replace with backend connection)
-            const projections = [
-                {name: 'Player 1', points: 25},
-                {name: 'Player 2', points: 18},
-                {name: 'Player 3', points: 32}
-            ];
-            let html = '<table class="table table-striped fantasy-table"><thead><tr><th>Player</th><th>Projected Points</th></tr></thead><tbody>';
-            projections.forEach(player => {
-                html += `<tr><td>${player.name}</td><td>${player.points}</td></tr>`;
-            });
-            html += '</tbody></table>';
-            document.getElementById('projectionsTable').innerHTML = html;
-        });
-
-        // Mock top player rankings (replace with backend connection)
-        const rankings = [
-            'Player A - QB',
-            'Player B - WR',
-            'Player C - RB'
-        ];
-        rankings.forEach(player => {
-            const listItem = document.createElement('li');
-            listItem.classList.add('list-group-item', 'fantasy-list-item');
-            listItem.textContent = player;
-            document.getElementById('rankingsList').appendChild(listItem);
-        });
+        function toggleDetails(sectionId) {
+            const details = document.getElementById(sectionId);
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+            } else {
+                details.classList.add('hidden');
+            }
+        }
     </script>
 </body>
 </html>
