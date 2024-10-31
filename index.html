@@ -8,35 +8,41 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f8f9fa;
+            background-color: #1e1e1e;
             margin: 0;
             padding: 0;
-            color: #333;
+            color: #f8f9fa;
         }
 
         header {
-            background-color: #343a40;
-            color: #fff;
-            padding: 20px;
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 40px;
             text-align: center;
+            border-bottom: 4px solid #ffc107;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px;
         }
 
         .section {
             margin-bottom: 40px;
-            padding: 20px;
-            background-color: #fff;
+            padding: 30px;
+            background-color: #2a2d34;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
         }
 
         .section h2 {
-            color: #007bff;
+            color: #ffc107;
             margin-top: 0;
         }
 
@@ -49,24 +55,26 @@
             margin-bottom: 15px;
             padding-left: 25px;
             position: relative;
+            line-height: 1.6;
         }
 
         .features-list li:before {
             content: "\2713";
-            color: #007bff;
+            color: #ffc107;
             position: absolute;
             left: 0;
             font-size: 1.5em;
         }
 
         footer {
-            background-color: #343a40;
-            color: #fff;
+            background-color: #212529;
+            color: #f8f9fa;
             text-align: center;
             padding: 20px;
-            position: absolute;
+            position: relative;
             bottom: 0;
             width: 100%;
+            border-top: 4px solid #ffc107;
         }
 
         @media (min-width: 768px) {
@@ -86,21 +94,34 @@
         }
 
         button {
-            background-color: #007bff;
-            color: #fff;
+            background-color: #ffc107;
+            color: #1e1e1e;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #e0a800;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(1px);
         }
 
         .hidden {
             display: none;
+        }
+
+        .details {
+            margin-top: 15px;
+            font-size: 0.9em;
+            line-height: 1.6;
+            color: #d3d3d3;
         }
     </style>
 </head>
@@ -117,7 +138,7 @@
                 <li>Live sync draft assistant with real-time advice</li>
             </ul>
             <button onclick="toggleDetails('cheat-sheets')">More Details</button>
-            <p id="cheat-sheets" class="hidden">With the Premium Cheat Sheets, you can customize your draft according to your league's rules, providing you with the most tailored experience for drafting success.</p>
+            <p id="cheat-sheets" class="hidden details">With the Premium Cheat Sheets, you can customize your draft according to your league's rules, providing you with the most tailored experience for drafting success.</p>
         </section>
         <section class="section">
             <h2>League Sync & Analysis</h2>
@@ -127,7 +148,7 @@
                 <li>Advanced trade analyzer tool</li>
             </ul>
             <button onclick="toggleDetails('league-sync')">More Details</button>
-            <p id="league-sync" class="hidden">League Sync allows you to integrate your fantasy league directly with our tools, ensuring you have up-to-date information for your entire roster.</p>
+            <p id="league-sync" class="hidden details">League Sync allows you to integrate your fantasy league directly with our tools, ensuring you have up-to-date information for your entire roster.</p>
         </section>
         <section class="section">
             <h2>Advice and Insights</h2>
@@ -137,7 +158,7 @@
                 <li>Daily fantasy sports (DFS) tools</li>
             </ul>
             <button onclick="toggleDetails('advice-insights')">More Details</button>
-            <p id="advice-insights" class="hidden">Get advice from experts across the industry to make sure you have the best information available for setting your lineup.</p>
+            <p id="advice-insights" class="hidden details">Get advice from experts across the industry to make sure you have the best information available for setting your lineup.</p>
         </section>
         <section class="section">
             <h2>Waiver & Start/Sit Assistance</h2>
@@ -146,7 +167,7 @@
                 <li>Start/Sit assistant to set your ideal lineup</li>
             </ul>
             <button onclick="toggleDetails('waiver-assistance')">More Details</button>
-            <p id="waiver-assistance" class="hidden">Use the waiver assistant to make informed decisions on who to pick up each week, helping you stay ahead of the competition.</p>
+            <p id="waiver-assistance" class="hidden details">Use the waiver assistant to make informed decisions on who to pick up each week, helping you stay ahead of the competition.</p>
         </section>
         <section class="section">
             <h2>Advanced Data & Tools</h2>
@@ -155,7 +176,7 @@
                 <li>"Who Should I Start?" tool for player comparison</li>
             </ul>
             <button onclick="toggleDetails('advanced-data')">More Details</button>
-            <p id="advanced-data" class="hidden">Our advanced tools give you the power to project player performances and determine their value, essential for making winning decisions.</p>
+            <p id="advanced-data" class="hidden details">Our advanced tools give you the power to project player performances and determine their value, essential for making winning decisions.</p>
         </section>
         <section class="section">
             <h2>Hall of Fame Tier Exclusive</h2>
@@ -164,7 +185,7 @@
                 <li>"My Playbook" for advanced team management</li>
             </ul>
             <button onclick="toggleDetails('hall-of-fame')">More Details</button>
-            <p id="hall-of-fame" class="hidden">The Hall of Fame tier offers exclusive access to deep analytics, historical data, and tools like "My Playbook" for taking your team to the next level.</p>
+            <p id="hall-of-fame" class="hidden details">The Hall of Fame tier offers exclusive access to deep analytics, historical data, and tools like "My Playbook" for taking your team to the next level.</p>
         </section>
     </div>
     <footer>
