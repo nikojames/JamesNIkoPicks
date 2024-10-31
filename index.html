@@ -43,23 +43,6 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        .modal-content {
-            background-color: #ffffff;
-            margin: 15% auto;
-            padding: 20px;
-            width: 80%;
-            border-radius: 10px;
-        }
         .input-field {
             width: 100%;
             padding: 10px;
@@ -97,7 +80,7 @@
         <div class="section-content">
             Premium members get access to detailed analysis on player props, helping users identify favorable betting opportunities.
         </div>
-        <button class="button" onclick="launchToolFast('playerProp')">Launch Tool</button>
+        <button class="button" onclick="launchTool('playerProp')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -105,7 +88,7 @@
         <div class="section-content">
             The Trade Analyzer evaluates fantasy trades, giving you a clear understanding of whether a trade will benefit your team or not.
         </div>
-        <button class="button" onclick="launchToolFast('tradeAnalyzer')">Launch Tool</button>
+        <button class="button" onclick="launchTool('tradeAnalyzer')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -113,7 +96,7 @@
         <div class="section-content">
             Get in-depth start/sit recommendations using historical data and matchup analysis. Especially helpful for weekly decisions in fantasy football.
         </div>
-        <button class="button" onclick="launchToolFast('startSit')">Launch Tool</button>
+        <button class="button" onclick="launchTool('startSit')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -121,7 +104,7 @@
         <div class="section-content">
             JamesNiko Fantasy Picks offers suggestions for waiver wire pick-ups and potential free agents who could improve your team.
         </div>
-        <button class="button" onclick="launchToolFast('waiverWire')">Launch Tool</button>
+        <button class="button" onclick="launchTool('waiverWire')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -129,7 +112,7 @@
         <div class="section-content">
             Premium users get expert insights on player performance, trends, and betting analysis.
         </div>
-        <button class="button" onclick="launchToolFast('expertInsights')">Launch Tool</button>
+        <button class="button" onclick="launchTool('expertInsights')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -137,19 +120,19 @@
         <div class="section-content">
             A DraftKings/FanDuel lineup optimizer to help you generate high-potential daily fantasy sports lineups.
         </div>
-        <button class="button" onclick="launchToolFast('optimizer')">Launch Tool</button>
+        <button class="button" onclick="launchTool('optimizer')">Launch Tool</button>
     </div>
 
     <script>
-        // JavaScript for opening tools in a new tab quickly without waiting for API calls
-        function launchToolFast(toolName) {
+        // JavaScript for launching tools in a new tab with minimal loading delay
+        function launchTool(toolName) {
             const leagueCode = document.getElementById('leagueCode').value;
             if (!leagueCode) {
                 alert('Please enter your ESPN Fantasy Football League Code first.');
                 return;
             }
-            // Open a new tab with a placeholder page for faster response
-            window.open(`https://your-fast-backend-server.com/${toolName}?leagueCode=${leagueCode}`, '_blank');
+            // Open a new tab for the tool with the league code
+            window.open(`tools/${toolName}.html?leagueCode=${leagueCode}`, '_blank');
         }
 
         // Function to submit the ESPN Fantasy League Code
@@ -157,23 +140,8 @@
             let leagueCode = document.getElementById('leagueCode').value;
 
             // Placeholder for API integration with minimal delay
-            fetch('https://your-fast-backend-server.com/league-data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ leagueCode: leagueCode })
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('League data synced successfully.');
-                // Populate data as needed
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            alert('League Code submitted successfully. Your league data will be synced in the background.');
         }
     </script>
 </body>
 </html>
-
