@@ -19,7 +19,7 @@
             color: #ffffff;
             font-size: 24px;
         }
-        .section {
+        .section, .tool-container {
             margin: 20px;
             padding: 20px;
             background-color: #ffffff;
@@ -35,7 +35,7 @@
             line-height: 1.5;
             margin-bottom: 10px;
         }
-        .button {
+        .button, .submit-button {
             padding: 10px 20px;
             background-color: #2e7d32;
             color: #ffffff;
@@ -51,19 +51,8 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .submit-button {
-            padding: 10px 20px;
-            background-color: #2e7d32;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
         .tool-container {
-            margin: 20px;
-            padding: 20px;
             background-color: #e8f5e9;
-            border-radius: 10px;
             display: none;
         }
     </style>
@@ -73,7 +62,6 @@
         JamesNiko Fantasy Picks
     </div>
 
-    <!-- Enter League Code Section -->
     <div class="section">
         <div class="section-title">Enter ESPN Fantasy Football League Code</div>
         <div class="section-content">
@@ -85,80 +73,11 @@
     <!-- Tools Section -->
     <div class="section">
         <div class="section-title">Player Prop Insights</div>
-        <div class="section-content">
-            Get access to detailed analysis on player props, helping you identify favorable betting opportunities.
-            <ul>
-                <li>Real-time player stats</li>
-                <li>Projection analysis</li>
-                <li>Historical performance</li>
-            </ul>
-        </div>
         <button class="button" onclick="showTool('playerPropContainer')">Launch Tool</button>
     </div>
-
     <div class="section">
         <div class="section-title">Trade Analyzer</div>
-        <div class="section-content">
-            Evaluate fantasy trades and understand whether a trade will benefit your team using real-time data analysis.
-            <ul>
-                <li>Compare player stats</li>
-                <li>Projected impact on your team</li>
-                <li>Recommendations on value trades</li>
-            </ul>
-        </div>
         <button class="button" onclick="showTool('tradeAnalyzerContainer')">Launch Tool</button>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Start/Sit Comparisons</div>
-        <div class="section-content">
-            Get in-depth start/sit recommendations using historical data and matchup analysis.
-            <ul>
-                <li>Weekly player projections</li>
-                <li>Matchup evaluations</li>
-                <li>Expert recommendations</li>
-            </ul>
-        </div>
-        <button class="button" onclick="showTool('startSitContainer')">Launch Tool</button>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Waiver Wire & Free Agent Recommendations</div>
-        <div class="section-content">
-            Get suggestions for waiver wire pick-ups and free agents who could improve your team.
-            <ul>
-                <li>Available players analysis</li>
-                <li>Impact on your team's performance</li>
-                <li>Priority recommendations</li>
-            </ul>
-        </div>
-        <button class="button" onclick="showTool('waiverWireContainer')">Launch Tool</button>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Expert Insights and Trends</div>
-        <div class="section-content">
-            Get expert insights on player performance, trends, and betting analysis.
-            <ul>
-                <li>Weekly trends overview</li>
-                <li>Performance-based analysis</li>
-                <li>Expert advice and notes</li>
-            </ul>
-        </div>
-        <button class="button" onclick="showTool('expertInsightsContainer')">Launch Tool</button>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Optimizer Tool</div>
-        <div class="section-content">
-            Use our lineup optimizer to generate high-potential daily fantasy sports lineups.
-            <ul>
-                <li>DraftKings and FanDuel lineups</li>
-                <li>Projected player performance</li>
-                <li>Optimal lineup combinations</li>
-            </ul>
-        </div>
-        <button class="button" onclick="showTool('optimizerContainer')">Launch Tool</button>
     </div>
 
     <!-- Tool Containers -->
@@ -172,28 +91,8 @@
         <p>Analysis of proposed trades will be displayed here.</p>
     </div>
 
-    <div id="startSitContainer" class="tool-container">
-        <h3>Start/Sit Comparisons Tool</h3>
-        <p>Recommendations for starting or sitting players based on matchup analysis will be displayed here.</p>
-    </div>
-
-    <div id="waiverWireContainer" class="tool-container">
-        <h3>Waiver Wire & Free Agent Recommendations Tool</h3>
-        <p>Suggestions for waiver wire pick-ups will be displayed here.</p>
-    </div>
-
-    <div id="expertInsightsContainer" class="tool-container">
-        <h3>Expert Insights and Trends Tool</h3>
-        <p>Expert insights and analysis of player trends will be displayed here.</p>
-    </div>
-
-    <div id="optimizerContainer" class="tool-container">
-        <h3>Optimizer Tool</h3>
-        <p>Optimized lineups for DraftKings and FanDuel will be displayed here.</p>
-    </div>
-
     <script>
-        // JavaScript to show tools directly on the page (instead of opening new tabs)
+        // Show the tool container when a button is clicked
         function showTool(containerId) {
             const leagueCode = document.getElementById('leagueCode').value;
             if (!leagueCode) {
@@ -211,12 +110,12 @@
             document.getElementById(containerId).style.display = 'block';
         }
 
-        // Function to submit the ESPN Fantasy League Code
+        // Placeholder for league code submission
         function submitLeagueCode() {
             let leagueCode = document.getElementById('leagueCode').value;
-
-            // Placeholder for API integration with minimal delay
-            alert('League Code submitted successfully. Your league data will be synced in the background.');
+            if (leagueCode) {
+                alert('League Code submitted successfully. Your league data will be synced in the background.');
+            }
         }
     </script>
 </body>
