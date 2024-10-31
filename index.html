@@ -80,7 +80,7 @@
         <div class="section-content">
             Premium members get access to detailed analysis on player props, helping users identify favorable betting opportunities.
         </div>
-        <button class="button" onclick="launchTool('playerProp')">Launch Tool</button>
+        <button class="button" onclick="launchTool('playerProp.html')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -88,7 +88,7 @@
         <div class="section-content">
             The Trade Analyzer evaluates fantasy trades, giving you a clear understanding of whether a trade will benefit your team or not.
         </div>
-        <button class="button" onclick="launchTool('tradeAnalyzer')">Launch Tool</button>
+        <button class="button" onclick="launchTool('tradeAnalyzer.html')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -96,7 +96,7 @@
         <div class="section-content">
             Get in-depth start/sit recommendations using historical data and matchup analysis. Especially helpful for weekly decisions in fantasy football.
         </div>
-        <button class="button" onclick="launchTool('startSit')">Launch Tool</button>
+        <button class="button" onclick="launchTool('startSit.html')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -104,7 +104,7 @@
         <div class="section-content">
             JamesNiko Fantasy Picks offers suggestions for waiver wire pick-ups and potential free agents who could improve your team.
         </div>
-        <button class="button" onclick="launchTool('waiverWire')">Launch Tool</button>
+        <button class="button" onclick="launchTool('waiverWire.html')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -112,7 +112,7 @@
         <div class="section-content">
             Premium users get expert insights on player performance, trends, and betting analysis.
         </div>
-        <button class="button" onclick="launchTool('expertInsights')">Launch Tool</button>
+        <button class="button" onclick="launchTool('expertInsights.html')">Launch Tool</button>
     </div>
 
     <div class="section">
@@ -120,19 +120,19 @@
         <div class="section-content">
             A DraftKings/FanDuel lineup optimizer to help you generate high-potential daily fantasy sports lineups.
         </div>
-        <button class="button" onclick="launchTool('optimizer')">Launch Tool</button>
+        <button class="button" onclick="launchTool('optimizer.html')">Launch Tool</button>
     </div>
 
     <script>
         // JavaScript for launching tools in a new tab with minimal loading delay
-        function launchTool(toolName) {
+        function launchTool(toolPage) {
             const leagueCode = document.getElementById('leagueCode').value;
             if (!leagueCode) {
                 alert('Please enter your ESPN Fantasy Football League Code first.');
                 return;
             }
             // Open a new tab for the tool with the league code
-            window.open(`tools/${toolName}.html?leagueCode=${leagueCode}`, '_blank');
+            window.open(toolPage + `?leagueCode=${leagueCode}`, '_blank');
         }
 
         // Function to submit the ESPN Fantasy League Code
